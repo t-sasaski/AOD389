@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logic.repository.AOD999CheckOrderNetMapper">
+	<select id="aodf_waod999_CheckOrder_net" statementType="CALLABLE">
+    	{call aodf_waod999_CheckOrder_net(
+	    	 #{IN_FLAG_OFF,                 mode=IN, jdbcType=NUMERIC}
+	    	,#{IN_FLAG_ON,                  mode=IN, jdbcType=NUMERIC}
+	    	,#{IN_ERROR_MSG_ABC10001,       mode=IN, jdbcType=VARCHAR}
+	    	,#{IN_ERROR_MSG_ABC10002,       mode=IN, jdbcType=VARCHAR}
+	    	,#{IN_ERROR_MSG_ABC10003,       mode=IN, jdbcType=VARCHAR}
+	    	,#{IN_ERROR_MSG_ABC10004,       mode=IN, jdbcType=VARCHAR}
+	    	,#{IN_ERROR_MSG_ABC10005,       mode=IN, jdbcType=VARCHAR}
+	    	,#{IN_ERROR_MSG_ABC10006,       mode=IN, jdbcType=VARCHAR}
+	    	,#{IN_ERROR_MSG_ABC10007,       mode=IN, jdbcType=VARCHAR}
+	    	,#{IN_ERROR_MSG_ABC10008,       mode=IN, jdbcType=VARCHAR}
+	    	,#{IN_ERROR_MSG_ABC10009,       mode=IN, jdbcType=VARCHAR}
+	    	,#{IN_ITEM_VALID_TYPE_STOP,     mode=IN, jdbcType=NUMERIC}
+	    	,#{IN_ORDER_TARGET_TYPE_OFF,    mode=IN, jdbcType=NUMERIC}
+	    	,#{OUT_INPUT_CNT,   mode=OUT, jdbcType=NUMERIC}
+	    	,#{OUT_OUTPUT_CNT,  mode=OUT, jdbcType=NUMERIC}
+	    	,#{OUT_RET,         mode=OUT, jdbcType=NUMERIC}
+	    	,#{OUT_SQL_STATE,   mode=OUT, jdbcType=VARCHAR}
+  		)}
+    </select>
+</mapper>
+

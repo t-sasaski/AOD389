@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logic.repository.AOD999UpdateOrderNetMapper">
+	<select id="aodf_waod999_UpdateOrder_net" statementType="CALLABLE">
+    	{call aodf_waod999_UpdateOrder_net(
+	    	 #{IN_FLAG_OFF,            mode=IN, jdbcType=NUMERIC}
+	    	,#{IN_FLAG_ON,             mode=IN, jdbcType=NUMERIC}
+	    	,#{IN_BF_JOB_ID,           mode=IN, jdbcType=VARCHAR}
+	    	,#{IN_ORDER_INPUT_TYPE_4,  mode=IN, jdbcType=NUMERIC}
+	    	,#{OUT_INPUT_CNT,                mode=OUT, jdbcType=NUMERIC}
+	    	,#{OUT_AODT_ORDER_DATA_INS_CNT,  mode=OUT, jdbcType=NUMERIC}
+	    	,#{OUT_AODT_NET_ORDER_UPD_CNT,   mode=OUT, jdbcType=NUMERIC}
+	    	,#{OUT_RET,                      mode=OUT, jdbcType=NUMERIC}
+	    	,#{OUT_SQL_STATE,                mode=OUT, jdbcType=VARCHAR}
+ 		)}
+    </select>
+</mapper>
+

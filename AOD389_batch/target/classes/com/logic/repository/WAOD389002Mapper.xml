@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logic.repository.WAOD389002Mapper">
+	<select id="aodf_waod389002_mainprocess" statementType="CALLABLE">
+    	{call aodf_waod389002_mainprocess(
+	    	#{IN_BUS_DATE_TEMP, mode=IN, jdbcType=VARCHAR}
+	    	,#{IN_FLAG_OFF,     mode=IN, jdbcType=NUMERIC}
+	    	,#{IN_FLAG_ON,      mode=IN, jdbcType=NUMERIC}
+	    	,#{IN_JOB_ID,       mode=IN, jdbcType=VARCHAR}
+	    	,#{IN_ORD_IN_TYPE_CUST_ORD_ID,      mode=IN, jdbcType=NUMERIC}
+	    	,#{IN_ORD_IN_TYPE_CUST_ORD_CD,      mode=IN, jdbcType=VARCHAR}
+	    	,#{IN_HOME_OFFICE_SHIP_TYP_SHIP_ID, mode=IN, jdbcType=NUMERIC}
+	    	,#{IN_HOME_OFFICE_SHIP_TYP_SHIP_CD, mode=IN, jdbcType=VARCHAR}
+	    	,#{OUT_INPUT_CNT,   mode=OUT, jdbcType=NUMERIC}
+	    	,#{OUT_OUTPUT_CNT1, mode=OUT, jdbcType=NUMERIC}
+	    	,#{OUT_OUTPUT_CNT2, mode=OUT, jdbcType=NUMERIC}
+	    	,#{OUT_RET,         mode=OUT, jdbcType=NUMERIC}
+	    	,#{OUT_SQL_STATE,   mode=OUT, jdbcType=VARCHAR}
+  		)}
+    </select>
+</mapper>
