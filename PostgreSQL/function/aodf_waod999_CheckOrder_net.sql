@@ -124,7 +124,7 @@ CREATE OR REPLACE FUNCTION aodf_waod999_CheckOrder_net(
 
         --********************************************************
         -- １．ジョブ発注データ（Input）を元に
-        --     商品、組織マスタ情報を取得
+        --     商品、組織ユニットマスタ情報を取得
         --********************************************************
 
         DROP TABLE IF EXISTS aodw_order_work_table1;
@@ -385,7 +385,7 @@ CREATE OR REPLACE FUNCTION aodf_waod999_CheckOrder_net(
                         WHEN A.order_qty = 0 OR A.order_qty IS NULL THEN
                             wUsErrorMsg_ABC10008
                         -- RAISE WARNING '27 order_start_date';
-                        -- 9 発注開始日＞発注日の場合はエラー
+                        -- 9 発注開始日 ＞ (納品日の決定)処理後の発注日の場合はエラー ※商品の発注開始日チェック
                         WHEN A.order_start_date_item > A.order_date THEN
                             wUsErrorMsg_ABC10007
                         -- 10 最終納品先納品日＝ＮＵＬＬの場合、または、発注日と同じ場合はエラー

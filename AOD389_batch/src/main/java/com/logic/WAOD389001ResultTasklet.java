@@ -32,15 +32,15 @@ public class WAOD389001ResultTasklet implements Tasklet {
 		
 		int countResult = jdbcTemplate.queryForObject(countSql,Integer.class);
 		
-		contribution.setExitStatus(ExitStatus.COMPLETED);
+//		contribution.setExitStatus(ExitStatus.COMPLETED);
 		
-//		if (countResult > 0) {
-//			// WAOD389001 の処理件数が、0件以外の場合　戻り値にCOMPLETEDを設定
-//			contribution.setExitStatus(ExitStatus.COMPLETED);
-//		} else {
-//			// WAOD389001 の処理件数が、0件の場合　戻り値にFAILEDを設定
-//			contribution.setExitStatus(ExitStatus.FAILED);
-//		}
+		if (countResult > 0) {
+			// WAOD389001 の処理件数が、0件以外の場合　戻り値にCOMPLETEDを設定
+			contribution.setExitStatus(ExitStatus.COMPLETED);
+		} else {
+			// WAOD389001 の処理件数が、0件の場合　戻り値にFAILEDを設定
+			contribution.setExitStatus(ExitStatus.FAILED);
+		}
 		
 		return RepeatStatus.FINISHED;
 	}

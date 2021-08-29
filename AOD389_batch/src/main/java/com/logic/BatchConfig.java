@@ -59,7 +59,9 @@ public class BatchConfig {
 	@Autowired
 	private AOD999UpdateOrderNetTasklet aOD999UpdateOrderNetTasklet;
 	
-
+	@Autowired
+	private AOD389End aOD389End;
+	
 	/**
 	 * ステップ１－１ WAOD389001：Reader
 	 * 
@@ -179,6 +181,8 @@ public class BatchConfig {
 	public Step step2() {
 		return stepBuilderFactory.get("step2")
 				.tasklet(wAOD389002Tasklet)
+				.tasklet(aOD999CheckOrderNetTasklet)
+				.tasklet(aOD999UpdateOrderNetTasklet)
 				.build();
 	}
 	
@@ -201,26 +205,33 @@ public class BatchConfig {
 				.tasklet(aOD999UpdateOrderNetTasklet)
 				.build();
 	}
-	
+	/**
+	 * ステップ５ END
+	 */
+	@Bean
+	public Step step5_End() {
+		return stepBuilderFactory.get("step5_End")
+				.tasklet(aOD389End)
+				.build();
+	}
 	/**
 	 * ジョブフロー
 	 */
 	@Bean
-	public Job testJob() {
+	public Job testJob() throws Exception {
 		return jobBuilderFactory.get("testJob")
 				.incrementer(new RunIdIncrementer())
 				.listener(listener())
 				.start(step0())
 				.next(step1())
 				.next(step1Result())
-//				.next(step1Result()).on(ExitStatus.COMPLETED.getExitCode()).to(step2)
-//				.next(step1Result()).on(ExitStatus.FAILED.getExitCode()).to(step5)
+//				.next(step1Result()).on(ExitStatus.COMPLETED.getExitCode()).to(step2())
+//				.next(step1Result()).on(ExitStatus.FAILED.getExitCode()).to(step5_End())
 				.next(step2())
-				.next(step3())
-				.next(step4())
+//				.next(step3())
+//				.next(step4())
+//				.next(step5_End())
 //				.end()
 				.build();
 	}
-	
-
 }
