@@ -181,8 +181,6 @@ public class BatchConfig {
 	public Step step2() {
 		return stepBuilderFactory.get("step2")
 				.tasklet(wAOD389002Tasklet)
-				.tasklet(aOD999CheckOrderNetTasklet)
-				.tasklet(aOD999UpdateOrderNetTasklet)
 				.build();
 	}
 	
@@ -228,8 +226,8 @@ public class BatchConfig {
 //				.next(step1Result()).on(ExitStatus.COMPLETED.getExitCode()).to(step2())
 //				.next(step1Result()).on(ExitStatus.FAILED.getExitCode()).to(step5_End())
 				.next(step2())
-//				.next(step3())
-//				.next(step4())
+				.next(step3())
+				.next(step4())
 //				.next(step5_End())
 //				.end()
 				.build();
